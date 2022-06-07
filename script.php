@@ -10,8 +10,31 @@ $categorias[]='adulto';
 $nome = $_POST['nome'];
 $idade = $_POST['idade'];
 
-//var_dump($nome);
-//var_dump($idade);
+
+// Informa que os campos não podem ser vazio 
+if(empty($nome && $idade)){
+    echo 'Campo Nome e Idade são obrigatórios!';
+    return;
+}
+
+//contar as strings (letras)
+if(strlen($nome) < 3){
+    echo 'O Nome deve conter no mínimo 3 caracteres.';
+    return;
+}
+
+//contar as strings (letras)
+if(strlen($nome) > 40){
+    echo 'O Nome muito extenso, por favor abrevie.';
+    return;
+}
+
+//contar os numeros da idade
+if(!is_numeric($idade)){
+    echo 'A Idade deve conter no máximo 3 caracteres e somente números.';
+    return;
+}
+
 
 if($idade >= 8 && $idade <=12){
     for($i=0; $i<=count($categorias); $i++){

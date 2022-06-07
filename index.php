@@ -14,13 +14,11 @@
     <body class="container">
         <h3 class="txt-center" style="text-align:center;">Formulario para inscrição de competidores</h3>
         <form action="script.php" method="POST">
-            <p for="formFile" > Nome completo:<input class="form-control" type="text" name="nome"> </p>
-            <p for="formFile" > Idade:<input class="form-control" type="text" name="idade"> </p>
+            <p for="formFile" > Nome completo:<input class="form-control" type="text" name="nome" required> </p>
+            <p for="formFile"> Idade:<input class="form-control" type="text" name="idade" required> </p>
             <p><input type="submit" value="Enviar"> </p>
         </form>
 <?php
-
-
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
