@@ -1,4 +1,6 @@
 <?php 
+session_start();
+ob_start();
 // criando as categorias 
 $categiorias=[];
 $categorias[]='infantil';
@@ -6,33 +8,26 @@ $categorias[]='adolescente';
 $categorias[]='jovem';
 $categorias[]='adulto';
 
-//print_r($categorias);
 $nome = $_POST['nome'];
 $idade = $_POST['idade'];
 
 
 // Informa que os campos não podem ser vazio 
-if(empty($nome && $idade)){
-    echo 'Campo Nome e Idade são obrigatórios!';
-    return;
-}
-
-//contar as strings (letras)
-if(strlen($nome) < 3){
-    echo 'O Nome deve conter no mínimo 3 caracteres.';
-    return;
+if(empty($nome) || empty($idade)){
+    $_SESSION['mensagem'] = '<h5 class="alert alert-danger">Campo Nome e Idade são obrigatórios!</h5>';
+    header('Location: index.php' );
 }
 
 //contar as strings (letras)
 if(strlen($nome) > 40){
-    echo 'O Nome muito extenso, por favor abrevie.';
-    return;
+    $_SESSION['mensagem'] =  '<h5 class="alert alert-danger">O Nome muito extenso, por favor abrevie.</h5>';
+    header('Location: index.php' );
 }
 
 //contar os numeros da idade
-if(!is_numeric($idade)){
-    echo 'A Idade deve conter no máximo 3 caracteres e somente números.';
-    return;
+if(!is_numeric($idade) || strlen($idade) >=3){
+    $_SESSION['mensagem'] =  '<h5 class="alert alert-danger">A Idade deve conter no máximo 3 caracteres e somente números.</h5>';
+    header('Location: index.php' );
 }
 
 

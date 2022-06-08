@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html >
 <html>
     <head>
@@ -12,10 +15,16 @@
 
     </head>
     <body class="container">
-        <h3 class="txt-center" style="text-align:center;">Formulario para inscrição de competidores</h3>
+        <h3 class="txt-center mt-3 mb-3" style="text-align:center; color: red;">Formulário para inscrição de competidores</h3>
         <form action="script.php" method="POST">
-            <p for="formFile" > Nome completo:<input class="form-control" type="text" name="nome" required> </p>
-            <p for="formFile"> Idade:<input class="form-control" type="text" name="idade" required> </p>
+            <?php
+            $mensagem = isset($_SESSION['mensagem']) ? $_SESSION['mensagem'] : ' ' ;
+            if(!empty($mensagem)){
+                echo $mensagem;
+            }
+            ?>
+            <p for="formFile" > Nome completo:<input class="form-control" type="text" name="nome" > </p>
+            <p for="formFile"> Idade:<input class="form-control" type="text" name="idade"> </p>
             <p><input type="submit" value="Enviar"> </p>
         </form>
 <?php
