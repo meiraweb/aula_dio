@@ -1,5 +1,5 @@
 <?php 
-session_start();
+include_once('servicos/servicoMensagemSessao.php');
 ?>
 <!DOCTYPE html >
 <html>
@@ -16,11 +16,16 @@ session_start();
     </head>
     <body class="container">
         <h3 class="txt-center mt-3 mb-3" style="text-align:center; color: red;">Formulário para inscrição de competidores</h3>
-        <form action="script.php" method="POST">
+        <form action="script.php" method="post">
             <?php
-            $mensagem = isset($_SESSION['mensagem']) ? $_SESSION['mensagem'] : ' ' ;
-            if(!empty($mensagem)){
-                echo $mensagem;
+            $mensagemSucesso = obterMensagemSucesso();
+            if(!empty($mensagemSucesso)){
+                echo $mensagemSucesso;
+            }
+
+            $mensagemErro = obterMensagemErro();
+            if(!empty($mensagemErro)){
+                echo $mensagemErro;
             }
             ?>
             <p for="formFile" > Nome completo:<input class="form-control" type="text" name="nome" > </p>
